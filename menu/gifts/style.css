@@ -1,0 +1,219 @@
+/* ==================================================
+   THEME COLORS / VARIABLES
+================================================== */
+:root {
+  --clr-bg-main: #f9f4f7;
+  --clr-bg-glass: rgba(29, 39, 75, 0.85);
+  --clr-primary: #1d274b;
+  --clr-secondary: #9b779d;
+  --clr-accent: #c9907c;
+  --clr-text-main: #1d1d1d;
+  --clr-text-light: #ffffff;
+  --clr-text-muted: #6b6b6b;
+  --radius-lg: 16px;
+  --radius-pill: 50px;
+  --font-body: 1rem;
+  --font-heading: 2rem;
+}
+
+/* ==================================================
+   RESET / BASE
+================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: var(--clr-text-main);
+  background: var(--clr-bg-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* ==================================================
+   HEADER / BACK BUTTON
+================================================== */
+.inner-header {
+  padding: 20px;
+  background: var(--clr-bg-glass);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.back-btn {
+  color: var(--clr-text-light);
+  background: var(--clr-primary);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: var(--clr-accent);
+}
+
+/* ==================================================
+   CONTACT SECTION
+================================================== */
+.section {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section__title {
+  font-size: var(--font-heading);
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--clr-primary);
+}
+
+.contact-page p {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--clr-text-muted);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  border: 2px solid var(--clr-secondary);
+  border-radius: var(--radius-lg);
+  font-size: 1rem;
+  width: 100%;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 10px rgba(201, 144, 124, 0.3);
+}
+
+.contact-form button {
+  background: linear-gradient(135deg, var(--clr-secondary), var(--clr-primary));
+  color: var(--clr-text-light);
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: var(--radius-pill);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+  background: var(--clr-accent);
+}
+
+/* ==================================================
+   SUCCESS MESSAGE
+================================================== */
+.contact-success {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: var(--clr-accent);
+  font-weight: bold;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ==================================================
+   FOOTER
+================================================== */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--clr-bg-glass);
+  color: var(--clr-text-light);
+  position: relative;
+  margin-top: 60px;
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+}
+
+/* ==================================================
+   ACCESSIBILITY
+================================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==================================================
+   ANIMATIONS
+================================================== */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+@media (max-width: 768px) {
+  .section {
+    padding: 40px 15px;
+  }
+
+  .section__title {
+    font-size: 1.6rem;
+  }
+
+  .contact-form button {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 30px 10px;
+  }
+
+  .section__title {
+    font-size: 1.4rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px 14px;
+  }
+
+  .contact-form button {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+}

@@ -1,124 +1,250 @@
 /* ==================================================
-   RSVP PAGE CSS — MINIMAL
+   GLOBAL RESET & BASE STYLING
 ================================================== */
-
-/* Reset / basic */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', sans-serif;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  background: url('../../bg1.jpeg') center/cover no-repeat fixed;
+  background-color: #f9f4f7;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ==================================================
+   RSVP PAGE — MODERNIZED & UNIFIED WITH GALLERY
+================================================== */
 body.inner-page {
   background-color: #fff8f5;
   color: #333;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  padding: clamp(12px, 2vw, 20px);
 }
 
 /* ================= HEADER ================= */
 .inner-header {
-  padding: 1rem 2rem;
+  width: 100%;
+  padding: clamp(12px, 2vw, 20px);
   background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
 }
 
-.inner-header .back-btn {
-  text-decoration: none;
-  color: #c9907c;
-  font-weight: 500;
-  font-size: 0.95rem;
-}
-
-/* ================= SECTION ================= */
+/* ================= RSVP CARD / SECTION ================= */
 .section {
   flex: 1;
-  padding: 2rem;
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 500px;
+  width: 90vw;
+  aspect-ratio: 1 / 1;
+  margin: clamp(24px, 3vw, 32px) auto;
+  background: linear-gradient(145deg, #fff8f5, #fef3f0);
+  border-radius: clamp(16px, 1.5vw, 20px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(24px, 2vw, 32px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .section__title {
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 2.4vw, 2rem);
   color: #9b779d;
-  text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: clamp(12px, 1.5vw, 16px);
 }
 
 .section__text {
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
   line-height: 1.6;
   color: #555;
-  margin-bottom: 1rem;
-  text-align: center;
+  margin-bottom: clamp(16px, 2vw, 24px);
 }
 
 /* ================= RSVP FORM ================= */
 .rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: clamp(12px, 1.5vw, 16px);
+  width: 100%;
 }
 
 .rsvp-form input,
 .rsvp-form select,
 .rsvp-form textarea {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
+  padding: clamp(10px, 1.2vw, 14px);
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
+  border: 1px solid #d8c0d3;
+  border-radius: 12px;
   outline: none;
-  transition: border 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  background: #fff;
 }
 
 .rsvp-form input:focus,
 .rsvp-form select:focus,
 .rsvp-form textarea:focus {
   border-color: #c9907c;
-  box-shadow: 0 0 8px rgba(201, 144, 124, 0.3);
+  box-shadow: 0 0 10px rgba(201, 144, 124, 0.3);
 }
 
 .rsvp-form button {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
+  padding: clamp(10px, 1.2vw, 14px);
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
   color: #fff;
-  background-color: #c9907c;
+  background: linear-gradient(135deg, #c9907c, #9b779d);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-weight: bold;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 
 .rsvp-form button:hover {
-  background-color: #9b779d;
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #9b779d, #c9907c);
 }
 
-/* ================= RSVP SUCCESS ================= */
+/* ================= RSVP SUCCESS MESSAGE ================= */
 .rsvp-success {
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: clamp(16px, 2vw, 24px);
+  padding: clamp(12px, 1.5vw, 20px);
   text-align: center;
   background: #f3e4e1;
   color: #9b779d;
-  border-radius: 0.5rem;
+  border-radius: 12px;
   font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.rsvp-success.show {
+  opacity: 1;
 }
 
 /* ================= FOOTER ================= */
 .footer {
-  padding: 1rem 2rem;
+  width: 100%;
+  padding: clamp(12px, 2vw, 20px);
   text-align: center;
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1vw, 0.9rem);
   color: #aaa;
   background: #fff;
   box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
 }
 
-/* ================= CONFETTI SPANS ================= */
-body span {
-  pointer-events: none;
+/* ================= BACK ICON — MATCH GALLERY STYLE ================= */
+.back-btn {
   position: fixed;
+  bottom: 2px;
+  left: -40px;
+  z-index: 10001; /* above literally everything */
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+}
+
+.back-icon {
+  position: fixed;
+  bottom: 2px;
+
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+  pointer-events: auto; /* allow click */
+  z-index: 10002;       /* above gallery content */
+}
+/* OPTIONAL: combine button + icon hover for stronger effect */
+.back-btn:hover .back-icon {
+  transform: scale(1.1);
+}
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .section {
+    width: 90vw;
+    max-width: 400px;
+    padding: 1.5rem;
+  }
+
+  .section__title {
+    font-size: 1.75rem;
+  }
+
+  .section__text {
+    font-size: 0.95rem;
+  }
+
+  .rsvp-form input,
+  .rsvp-form select,
+  .rsvp-form textarea,
+  .rsvp-form button {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .back-icon {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    width: 90vw;
+    max-width: 350px;
+    padding: 1rem;
+  }
+
+  .section__title {
+    font-size: 1.5rem;
+  }
+
+  .section__text {
+    font-size: 0.9rem;
+  }
+
+  .rsvp-form input,
+  .rsvp-form select,
+  .rsvp-form textarea,
+  .rsvp-form button {
+    font-size: 0.9rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .back-icon {
+    width: 200px;
+    height: 200px;
+  }
 }

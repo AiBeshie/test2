@@ -1,0 +1,113 @@
+/* ==================================================
+   GLOBAL RESET / BASE
+================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  color: #1d1d1d;
+  background-color: #f9f4f7;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* ==================================================
+   INNER PAGE LAYOUT
+================================================== */
+.inner-page h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.inner-page p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* ==================================================
+   BACK ICON BUTTON (LOWER-LEFT)
+================================================== */
+.back-btn {
+  position: fixed;      /* fixed sa screen */
+  bottom: 20px;         /* lower-left corner */
+  left: 20px;
+  z-index: 1000;        /* nasa ibabaw ng lahat ng content */
+  display: inline-block;
+  background: none;     /* walang box */
+  padding: 0;           /* walang padding */
+  border: none;         /* walang border */
+  cursor: pointer;      /* pointer cursor sa hover/tap */
+  transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05); /* maliit na zoom sa hover/tap */
+}
+
+.back-icon {
+  width: 150px;         /* adjust size depende sa screen */
+  height: 150px;
+  object-fit: contain;  /* scale image nang tama */
+  display: block;       /* para buong image clickable */
+}
+
+/* ==================================================
+   TOUCH/CLICK PAGE ANIMATIONS
+================================================== */
+.page-loaded {
+  opacity: 1;
+  transition: opacity 0.4s ease-in;
+}
+
+.page-exit {
+  opacity: 0;
+  transition: opacity 0.35s ease-out;
+}
+
+/* ==================================================
+   RESPONSIVE
+================================================== */
+@media (max-width: 768px) {
+  .back-icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .inner-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .inner-page p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .inner-page h1 {
+    font-size: 1.5rem;
+  }
+
+  .inner-page p {
+    font-size: 0.9rem;
+  }
+}

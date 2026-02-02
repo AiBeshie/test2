@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ================= CONFETTI COLORS =================
   const cssVars = getComputedStyle(document.documentElement);
   const CONFETTI_COLORS = [
-    cssVars.getPropertyValue("--clr-secondary").trim() || "#9b779d",
-    cssVars.getPropertyValue("--clr-accent").trim() || "#c9907c",
-    cssVars.getPropertyValue("--clr-soft").trim() || "#f3e4e1"
+    cssVars.getPropertyValue("--clr-secondary")?.trim() || "#9b779d",
+    cssVars.getPropertyValue("--clr-accent")?.trim() || "#c9907c",
+    cssVars.getPropertyValue("--clr-soft")?.trim() || "#f3e4e1"
   ];
 
   // ================= RSVP CONFETTI =================
@@ -48,11 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ================= RSVP FORM SUBMISSION =================
   const rsvpForm = $(".rsvp-form");
-  if (!rsvpForm) return;
+  const rsvpSuccess = $("#rsvpSuccess");
+  if (!rsvpForm || !rsvpSuccess) return;
 
   const submitBtn = rsvpForm.querySelector("button[type=submit]");
 
-  rsvpForm.addEventListener("submit", async e => {
+  rsvpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     // Show loading state
@@ -76,13 +77,20 @@ document.addEventListener("DOMContentLoaded", () => {
       if (result.status === "success") {
         rsvpForm.reset();
         launchRSVPConfetti();
-        alert("RSVP submitted! 💜");
+
+        // Show success message
+        rsvpSuccess.classList.add("show");
+        setTimeout(() => rsvpSuccess.classList.remove("show"), 5000);
       } else {
-        alert("Submission failed. Please try again.");
+        rsvpSuccess.textContent = "Submission failed. Please try again.";
+        rsvpSuccess.classList.add("show");
+        setTimeout(() => rsvpSuccess.classList.remove("show"), 5000);
       }
 
     } catch (err) {
-      alert("Network error. Please try again later.");
+      rsvpSuccess.textContent = "Network error. Please try again later.";
+      rsvpSuccess.classList.add("show");
+      setTimeout(() => rsvpSuccess.classList.remove("show"), 5000);
       console.error("RSVP fetch error:", err);
     } finally {
       submitBtn.disabled = false;

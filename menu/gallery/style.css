@@ -1,6 +1,23 @@
+
+
 /* ==================================================
-   GALLERY — POLISHED FINAL DESIGN
+   GLOBAL RESET & BASE STYLING
 ================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  background: url('../../bg1.jpeg') center/cover no-repeat fixed;
+  background-color: #f9f4f7;
+  scroll-behavior: smooth;
+}
+
 
 /* =========================
    GALLERY WRAPPER (GRID)
@@ -217,4 +234,31 @@ body.popup-open { overflow: hidden; }
     grid-template-columns: repeat(2, 1fr);
     gap: 6px;
   }
+}
+
+
+
+
+.back-btn {
+  position: fixed;      /* fixed sa screen */
+  bottom: 2px;         /* lower-left corner */
+  left: -40px;
+  z-index: 1000;        /* nasa ibabaw ng lahat */
+  display: inline-block;
+  background: none;     /* tanggalin kahit anong background */
+  padding: 0;           /* tanggalin padding */
+  border: none;         /* tanggalin border */
+  cursor: pointer;      /* pointer cursor sa hover */
+  transition: transform 0.2s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05); /* maliit na animation sa hover/tap */
+}
+
+.back-icon {
+  width: 200px;         /* adjust size ng image */
+  height: 200px;
+  object-fit: contain;
+  display: block;
 }

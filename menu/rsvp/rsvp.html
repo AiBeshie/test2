@@ -12,10 +12,7 @@
 
 <body class="inner-page">
 
-  <!-- ================= HEADER / BACK BUTTON ================= -->
-  <header class="inner-header">
-    <a href="../../index.html" class="back-btn">← Back to Menu</a>
-  </header>
+
 
   <!-- ================= RSVP SECTION ================= -->
   <section id="rsvp" class="section rsvp-page">
@@ -47,6 +44,11 @@
       💌 Thank you! Your RSVP has been sent.
     </div>
   </section>
+
+
+<a href="../../home.html" class="back-btn">
+  <img src="../../assets/icon/back-icon.png" alt="Back" class="back-icon">
+</a>
 
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
@@ -82,7 +84,7 @@ document.addEventListener("touchend", e => {
     document.body.classList.add("page-exit");
 
     setTimeout(() => {
-      window.location.href = "../../index.html";
+      window.location.href = "../../home.html";
     }, 350);
   }
 });
