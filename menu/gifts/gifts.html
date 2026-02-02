@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Aldrin & Sharmaine</title>
+  <meta name="description" content="Contact Aldrin & Sharmaine for messages or inquiries." />
+
+  <!-- Path adjusted since inside menu/ -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="inner-page">
+
+  <!-- ================= HEADER / BACK BUTTON ================= -->
+  <header class="inner-header">
+    <a href="../../index.html" class="back-btn">← Back to Menu</a>
+  </header>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <section id="contact" class="section contact-page">
+    <h2 class="section__title">Contact Us</h2>
+
+    <p>Have a question or just want to send your love 💌? Fill out the form below!</p>
+
+    <form id="contactForm" class="contact-form">
+
+      <label for="contactName" class="sr-only">Full Name</label>
+      <input type="text" id="contactName" name="name" placeholder="Your Full Name" required />
+
+      <label for="contactEmail" class="sr-only">Email</label>
+      <input type="email" id="contactEmail" name="email" placeholder="Your Email" required />
+
+      <label for="contactMessage" class="sr-only">Message</label>
+      <textarea id="contactMessage" name="message" rows="5" placeholder="Your Message..." required></textarea>
+
+      <button type="submit" class="btn btn--secondary">Send Message</button>
+
+    </form>
+
+    <div id="contactSuccess" class="contact-success" style="display:none;">
+      💌 Thank you! Your message has been sent.
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <p>&copy; 2027 Aldrin John &amp; Sharmaine</p>
+  </footer>
+
+  <!-- ================= CONTACT SCRIPT ================= -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      // For demo purposes: show success message
+      document.getElementById("contactSuccess").style.display = "block";
+      this.reset();
+
+      // TODO: Connect to backend, email API, or Google Forms
+    });
+  </script>
+
+</body>
+<script src="js/main.js"></script>
+
+</html>

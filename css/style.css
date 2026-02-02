@@ -1,0 +1,320 @@
+
+/* ==================================================
+   PAGE TRANSITION SYSTEM (APP FEEL)
+================================================== */
+
+body {
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+body.page-loaded {
+  opacity: 1;
+}
+
+body.page-exit {
+  opacity: 0;
+  transform: scale(0.98);
+}
+
+/* makes touch interactions feel instant */
+.menu-btn {
+  touch-action: manipulation;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+
+/* ==================================================
+   GLOBAL RESET & BASE STYLING
+================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  background: url('../bg1.jpeg') center/cover no-repeat fixed;
+  background-color: #f9f4f7;
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* ================= HEADINGS ================= */
+h2.section__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ================= MENU / LANDING PAGE ================= */
+.menu-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* ---------------- BUTTON BASE ---------------- */
+.menu-btn {
+  position: absolute;
+  width: 190px;
+  height: 210px;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  border: 6px solid rgba(255,255,255,0.8);
+  cursor: pointer;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center calc(50% + 22px);
+  background-repeat: no-repeat;
+  transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+}
+
+/* ---------------- BUTTON LABEL / FRAME ---------------- */
+.menu-btn::before {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid rgba(255,255,255,0.4);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  z-index: 2;
+}
+
+/* ---------------- BUTTON HOVER EFFECT ---------------- */
+.menu-btn.hover,
+.menu-btn:hover {
+  box-shadow: 0 0 20px rgba(255,255,255,0.7);
+  z-index: 10;
+}
+
+.story-btn.hover { transform: translate(-50%, -80%) scale(1.15) rotate(-30deg); }
+.rsvp-btn.hover { transform: translate(-40%, -80%) scale(1.15) rotate(30deg); }
+.details-btn.hover { transform: translate(-50%, -80%) scale(1.15) rotate(0deg); }
+.gallery-btn.hover { transform: translate(-10%, -80%) scale(1.15) rotate(20deg); }
+.gifts-btn.hover { transform: translate(-50%, -80%) scale(1.15) rotate(-20deg); }
+.contact-btn.hover { transform: translate(-20%, -80%) scale(1.15) rotate(32deg); }
+
+/* ---------------- INITIAL POSITIONS + BACKGROUND IMAGES ---------------- */
+.story-btn { top: 25%; left: 19%; transform: translate(-30%, -30%) rotate(-12deg); background-image: url('../image/photo1.jpg'); }
+.rsvp-btn { top: 29%; left: 70%; transform: translate(-50%, -50%) rotate(20deg); background-image: url('../image/photo2.jpg'); }
+.details-btn { top: 71%; left: 23%; transform: translate(-30%, -30%) rotate(14deg); background-image: url('../image/photo3.jpg'); }
+.gallery-btn { top: 70%; left: 68%; transform: translate(-30%, -30%) rotate(-26deg); background-image: url('../image/photo4.jpg'); }
+.gifts-btn { top: 48%; left: 5%; transform: translate(-30%, -30%) rotate(-8deg); background-image: url('../image/photo5.jpg'); }
+.contact-btn { top: 46%; left: 80%; transform: translate(-30%, -30%) rotate(8deg); background-image: url('../image/photo6.jpg'); }
+
+/* ================= RESPONSIVE MENU ================= */
+@media (max-width: 768px) {
+  .menu-btn { width: 140px; height: 160px; }
+  .menu-btn::before { font-size: 12px; height: 18px; }
+}
+
+@media (max-width: 480px) {
+  .menu-btn { width: 120px; height: 140px; }
+}
+
+/* ==================================================
+   INNER PAGES (story, details, rsvp, gallery, gifts, contact)
+================================================== */
+.inner-page {
+  flex-direction: column;
+  padding: 30px 20px;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.inner-header {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  text-decoration: none;
+  font-weight: bold;
+  color: #7b4fa1;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 2px solid #7b4fa1;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #7b4fa1;
+  color: #fff;
+}
+
+/* ---------------- SECTIONS ---------------- */
+.section {
+  margin-bottom: 50px;
+  text-align: center;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.section p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+/* ---------------- FORMS (RSVP + CONTACT) ---------------- */
+input, select, textarea, button {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #7b4fa1;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #a066d5;
+}
+
+.rsvp-success, .contact-success {
+  margin-top: 20px;
+  color: #4caf50;
+  font-weight: bold;
+  display: none;
+}
+/* RSVP success fade-in */
+.rsvp-success {
+  display: block;           /* always block so we can animate */
+  opacity: 0;               /* start invisible */
+  transition: opacity 0.8s ease-in-out;
+}
+
+.rsvp-success.show {
+  opacity: 1;               /* fade in */
+}
+
+/* ---------------- MAP ---------------- */
+.map-container {
+  margin-top: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* ---------------- GALLERY ---------------- */
+.gallery-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.gallery-img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(123,79,161,0.35);
+}
+
+.pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pagination button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #7b4fa1;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #a066d5;
+}
+
+/* ---------------- GIFTS ---------------- */
+.gift-list {
+  text-align: left;
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.gift-list li {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+  margin-top: auto;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ================= RESPONSIVE INNER PAGES ================= */
+@media (max-width: 768px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .pagination button { padding: 6px 12px; }
+}
+
+@media (max-width: 480px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  .pagination button { padding: 5px 10px; font-size: 0.85rem; }
+}

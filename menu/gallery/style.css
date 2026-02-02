@@ -1,0 +1,220 @@
+/* ==================================================
+   GALLERY — POLISHED FINAL DESIGN
+================================================== */
+
+/* =========================
+   GALLERY WRAPPER (GRID)
+========================= */
+.gallery-wrapper {
+  display: grid;
+  gap: clamp(16px, 2vw, 32px); /* spacing between categories */
+  padding: clamp(16px, 2vw, 32px);
+  position: relative;
+}
+
+/* FIGURE CARD */
+.gallery-wrapper figure {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: clamp(8px, 1vw, 14px);
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* IMAGE */
+.gallery-wrapper img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-wrapper figure:hover img {
+  transform: scale(1.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+/* =========================
+   SLIDESHOW MODE
+========================= */
+.gallery-wrapper.slideshow {
+  display: block;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.gallery-wrapper.slideshow figure {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.gallery-wrapper.slideshow figure.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* =========================
+   CATEGORY TITLE
+========================= */
+.gallery-page h3 {
+  margin: clamp(18px, 2vw, 26px) 0 clamp(8px, 1vw, 12px);
+  font-size: clamp(1.1rem, 1.4vw, 1.6rem);
+  color: #1d274b;
+  border-bottom: 2px solid #b48bbd;
+  padding-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+/* SECTION FRAME */
+.gallery-section {
+  border: 2px solid #e8deef;
+  padding: clamp(10px, 2vw, 18px);
+  margin-bottom: clamp(22px, 3vw, 32px);
+  border-radius: clamp(10px, 1vw, 16px);
+  background: linear-gradient(145deg, #faf8fc, #ffffff);
+}
+
+/* =========================
+   PAGINATION
+========================= */
+.pagination {
+  margin: clamp(8px, 2vw, 14px) 0 clamp(16px, 3vw, 22px);
+  display: flex;
+  justify-content: center;
+  gap: clamp(8px, 1vw, 14px);
+}
+
+.pagination button {
+  padding: clamp(6px, 1vw, 10px) clamp(12px, 2vw, 18px);
+  font-weight: bold;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #9b779d, #1d274b);
+  color: #fff;
+  transition: all 0.25s ease;
+}
+
+.pagination button:hover {
+  transform: scale(1.08);
+  background: #c9907c;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+.drive-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.96);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.drive-popup iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* CAPTION */
+#driveCaption {
+  color: #fff;
+  margin-top: 10px;
+  font-size: clamp(12px, 1.2vw, 15px);
+  text-align: center;
+  opacity: 0.85;
+}
+
+/* CONTROLS */
+.drive-close,
+.drive-prev,
+.drive-next,
+.drive-download,
+.drive-share {
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  width: clamp(38px, 5vw, 46px);
+  height: clamp(38px, 5vw, 46px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+  z-index: 10001;
+}
+
+.drive-close:hover,
+.drive-prev:hover,
+.drive-next:hover,
+.drive-download:hover,
+.drive-share:hover {
+  background: rgba(0,0,0,0.8);
+  transform: scale(1.12);
+}
+
+.drive-close { top: 20px; left: 20px; }
+.drive-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+.drive-next { right: 20px; top: 50%; transform: translateY(-50%); }
+.drive-download { top: 20px; right: 70px; }
+.drive-share { top: 20px; right: 130px; }
+
+/* SHARE MENU */
+.share-popup {
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  display: none;
+  flex-direction: column;
+  background: rgba(0,0,0,0.9);
+  padding: 10px;
+  border-radius: 14px;
+  gap: 8px;
+  z-index: 10002;
+}
+
+.share-popup a {
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(255,255,255,0.12);
+  transition: all 0.2s ease;
+}
+
+.share-popup a:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.05);
+}
+
+body.popup-open { overflow: hidden; }
+
+/* =========================
+   MOBILE FIXES
+========================= */
+@media (max-width: 768px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+}

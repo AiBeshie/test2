@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Aldrin & Sharmaine | Wedding Menu</title>
+  <meta name="description" content="Navigate through our wedding story, details, gallery and RSVP." />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body class="menu-page">
+
+  <div class="menu-container">
+
+    <a href="menu/story/story.html" class="menu-btn story-btn" data-title="OUR STORY" aria-label="Our Story"></a>
+
+    <a href="menu/details/details.html" class="menu-btn details-btn" data-title="DETAILS" aria-label="Wedding Details"></a>
+
+    <a href="menu/rsvp/rsvp.html" class="menu-btn rsvp-btn" data-title="RSVP" aria-label="RSVP"></a>
+
+    <a href="menu/gallery/gallery.html" class="menu-btn gallery-btn" data-title="GALLERY" aria-label="Gallery"></a>
+
+    <a href="menu/gifts/gifts.html" class="menu-btn gifts-btn" data-title="GIFTS" aria-label="Gifts"></a>
+
+    <a href="menu/contact/contact.html" class="menu-btn contact-btn" data-title="CONTACT" aria-label="Contact"></a>
+
+  </div>
+
+
+  <!-- ================= MENU BUTTON ANIMATION SCRIPT ================= -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("page-loaded");
+
+  const buttons = document.querySelectorAll(".menu-btn");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("pointerdown", (e) => {
+      e.preventDefault();
+      btn.classList.add("hover");
+      document.body.classList.add("page-exit");
+
+      setTimeout(() => {
+        window.location.href = btn.href;
+      }, 420);
+    });
+  });
+});
+</script>
+
+
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

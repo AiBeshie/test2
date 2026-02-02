@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body class="inner-page">
+
+<h1>Contact Us</h1>
+<p>Email: example@email.com</p>
+<p>Phone: +63 912 345 6789</p>
+<a href="../../index.html" class="back-btn">Back to Menu</a>
+
+<script src="../../js/main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("page-loaded");
+});
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  if (Math.abs(diffX) > 70 || Math.abs(diffY) > 70) {
+    document.body.classList.add("page-exit");
+
+    setTimeout(() => {
+      window.location.href = "../../index.html";
+    }, 350);
+  }
+});
+</script>
+
+</body>
+</html>

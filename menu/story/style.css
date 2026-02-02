@@ -1,0 +1,106 @@
+/* ==================================================
+   STORY PAGE CSS
+================================================== */
+
+/* Reset some inner-page defaults */
+.inner-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
+  background-color: #f9f4f7;
+  color: #1d1d1d;
+}
+
+/* ================= HEADER / BACK BUTTON ================= */
+.inner-header {
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.back-btn {
+  text-decoration: none;
+  font-weight: bold;
+  color: #7b4fa1;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border: 2px solid #7b4fa1;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #7b4fa1;
+  color: #fff;
+}
+
+/* ================= STORY SECTION ================= */
+.story-page {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story-page .section__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #1d274b;
+  margin-bottom: 25px;
+}
+
+.story-page .section__text {
+  font-size: clamp(1rem, 1.1vw, 1.2rem);
+  line-height: 1.8;
+  margin: 15px 0;
+  color: #4b4b4b;
+}
+
+/* ================= STORY IMAGE ================= */
+.story-image {
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto 0;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  object-fit: cover;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+  margin-top: auto;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .story-page {
+    padding: 30px 15px;
+  }
+  .story-page .section__title {
+    font-size: clamp(1.6rem, 4vw, 2rem);
+  }
+  .story-page .section__text {
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  }
+  .story-image {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-page {
+    padding: 20px 10px;
+  }
+  .story-page .section__title {
+    font-size: 1.5rem;
+  }
+  .story-page .section__text {
+    font-size: 0.9rem;
+  }
+}

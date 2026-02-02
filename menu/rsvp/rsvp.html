@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSVP | Aldrin & Sharmaine</title>
+  <meta name="description" content="RSVP for the wedding of Aldrin & Sharmaine." />
+
+  <!-- Path adjusted since this is inside menu/ folder -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="inner-page">
+
+  <!-- ================= HEADER / BACK BUTTON ================= -->
+  <header class="inner-header">
+    <a href="../../index.html" class="back-btn">← Back to Menu</a>
+  </header>
+
+  <!-- ================= RSVP SECTION ================= -->
+  <section id="rsvp" class="section rsvp-page">
+    <h2 class="section__title">RSVP</h2>
+
+    <p>Please let us know if you can join our special day 💜</p>
+
+    <form class="rsvp-form" id="rsvpForm">
+
+      <label for="rsvpName" class="sr-only">Full Name</label>
+      <input type="text" id="rsvpName" name="name" placeholder="Your Full Name" required />
+
+      <label for="rsvpAttendance" class="sr-only">Attendance</label>
+      <select id="rsvpAttendance" name="attendance" required>
+        <option value="" hidden selected>Will you be attending?</option>
+        <option value="accepts">Accepts with pleasure 💜</option>
+        <option value="not_sure">Not sure yet 🤍</option>
+        <option value="declines">Regretfully declines 😔</option>
+      </select>
+
+      <label for="rsvpMessage" class="sr-only">Message</label>
+      <textarea id="rsvpMessage" name="message" rows="4" placeholder="Leave a message..."></textarea>
+
+      <button type="submit" class="btn btn--secondary">Send RSVP</button>
+
+    </form>
+
+    <div id="rsvpSuccess" class="rsvp-success" style="display:none;">
+      💌 Thank you! Your RSVP has been sent.
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <p>&copy; 2027 Aldrin John &amp; Sharmaine</p>
+  </footer>
+
+
+
+</body>
+<script src="../../js/main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("page-loaded");
+});
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  if (Math.abs(diffX) > 70 || Math.abs(diffY) > 70) {
+    document.body.classList.add("page-exit");
+
+    setTimeout(() => {
+      window.location.href = "../../index.html";
+    }, 350);
+  }
+});
+</script>
+<script src="script.js"></script>
+
+</html>

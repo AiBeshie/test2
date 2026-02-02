@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Aldrin & Sharmaine</title>
+  <meta name="description" content="Wedding gallery of Aldrin & Sharmaine: Prenup, Church, Reception." />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="inner-page">
+
+<header class="inner-header">
+  <a href="../../index.html" class="back-btn">← Back to Menu</a>
+</header>
+
+<section id="gallery" class="section gallery-page">
+  <h2 class="section__title">Gallery</h2>
+
+  <h3>Prenup</h3>
+  <div id="prenup-gallery" class="gallery-wrapper"></div>
+  <div class="pagination" id="prenup-pagination">
+    <button class="prev">Prev</button>
+    <button class="next">Next</button>
+  </div>
+
+  <h3>Church</h3>
+  <div id="church-gallery" class="gallery-wrapper"></div>
+  <div class="pagination" id="church-pagination">
+    <button class="prev">Prev</button>
+    <button class="next">Next</button>
+  </div>
+
+  <h3>Reception</h3>
+  <div id="reception-gallery" class="gallery-wrapper"></div>
+  <div class="pagination" id="reception-pagination">
+    <button class="prev">Prev</button>
+    <button class="next">Next</button>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2027 Aldrin John &amp; Sharmaine</p>
+</footer>
+
+<!-- GALLERY LIGHTBOX -->
+<div id="drivePopup" class="drive-popup">
+  <iframe id="driveFrame" frameborder="0"></iframe>
+  <div id="driveCaption" class="drive-caption"></div>
+  <button class="drive-prev">←</button>
+  <button class="drive-next">→</button>
+  <button class="drive-download">⬇</button>
+  <button class="drive-close">✖</button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("page-loaded");
+});
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  if (Math.abs(diffX) > 70 || Math.abs(diffY) > 70) {
+    document.body.classList.add("page-exit");
+
+    setTimeout(() => {
+      window.location.href = "../../index.html";
+    }, 350);
+  }
+});
+</script>
+
+</body>
+</html>

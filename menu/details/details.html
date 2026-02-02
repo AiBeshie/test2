@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Details | Aldrin & Sharmaine</title>
+  <meta name="description" content="Wedding date, time, and venue of Aldrin & Sharmaine." />
+
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+
+<body class="inner-page">
+
+<header class="inner-header">
+  <a href="../../index.html" class="back-btn">← Back to Menu</a>
+</header>
+
+<section id="details" class="section details-page">
+  <h2 class="section__title">Wedding Details</h2>
+
+  <p><strong>Date:</strong> June 20, 2027</p>
+  <p><strong>Time:</strong> 2:00 PM</p>
+  <p>
+    <strong>Venue:</strong><br>
+    Mary, Mother of Good Counsel Parish Church<br>
+    Marcelo Green Village, Parañaque City
+  </p>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.430148297455!2d121.03744291528824!3d14.477099086058796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cfa9f6d78d7d%3A0x4f91183a6be3af0c!2sMary%2C%20Mother%20of%20Good%20Counsel%20Parish%20Church!5e0!3m2!1sen!2sph!4v1705720000000"
+      style="border:0; border-radius:14px; width:100%; height:400px;"
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; 2027 Aldrin John &amp; Sharmaine</p>
+</footer>
+
+<script src="../../js/main.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("page-loaded");
+});
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+document.addEventListener("touchend", e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const touchEndY = e.changedTouches[0].screenY;
+
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
+
+  if (Math.abs(diffX) > 70 || Math.abs(diffY) > 70) {
+    document.body.classList.add("page-exit");
+
+    setTimeout(() => {
+      window.location.href = "../../index.html";
+    }, 350);
+  }
+});
+</script>
+
+</body>
+</html>
