@@ -97,6 +97,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const frame = $("#driveFrame");
   const caption = $("#driveCaption");
 
+  // Create image counter element
+  const counter = document.createElement("div");
+  counter.className = "drive-counter";
+  popup.appendChild(counter);
+
+  function updateCounter() {
+    counter.textContent = currentGallery.length > 0 ? `${currentIndex + 1}/${currentGallery.length}` : "";
+  }
+
   // Share buttons
   const shareBtn = document.createElement("button");
   shareBtn.className = "drive-share";
@@ -135,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = galleryArray.findIndex(f => f.id === fileId);
     frame.src = `https://drive.google.com/file/d/${fileId}/preview`;
     caption.textContent = title;
+    updateCounter();
     updateShareLinks(fileId, title);
     popup.style.display = "flex";
     popup.style.opacity = 0;
@@ -178,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     img.onload = () => {
       frame.src = img.src;
       caption.textContent = next.name;
+      updateCounter();
       updateShareLinks(next.id, next.name);
 
       frame.style.transition = "transform 0.3s ease, opacity 0.3s ease";
@@ -213,6 +224,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const figures = Array.from(galleryWrapper.querySelectorAll("figure"));
     const galleryArray = figures.map(f => ({ id: f.dataset.id, name: f.dataset.name }));
     openDrivePreview(fig.dataset.id, fig.dataset.name, galleryArray);
+  });
+
+  /* ==================================================
+     MOBILE CONTROLS SHOW/HIDE
+  ================================================== */
+  let controlsTimeout;
+  const isMobile = window.innerWidth <= 768;
+
+  function showControls() {
+    if (!isMobile) return;
+    popup.classList.add("controls-visible");
+    clearTimeout(controlsTimeout);
+    controlsTimeout = setTimeout(() => {
+      popup.classList.remove("controls-visible");
+    }, 3000);
+  }
+
+  function hideControls() {
+    if (!isMobile) return;
+    clearTimeout(controlsTimeout);
+    popup.classList.remove("controls-visible");
+  }
+
+  popup?.addEventListener("click", (e) => {
+    // Don't toggle if clicking buttons
+    if (e.target.closest(".drive-close, .drive-prev, .drive-next, .drive-download, .drive-share, .share-popup")) return;
+    showControls();
+  });
+
+  popup?.addEventListener("touchstart", () => {
+    showControls();
   });
 
   /* ==================================================

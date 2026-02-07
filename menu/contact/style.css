@@ -40,46 +40,6 @@ body {
 }
 
 /* ==================================================
-   BACK ICON BUTTON (LOWER-LEFT)
-================================================== */
-.back-btn {
-  position: fixed;      /* fixed sa screen */
-  bottom: 20px;         /* lower-left corner */
-  left: 20px;
-  z-index: 1000;        /* nasa ibabaw ng lahat ng content */
-  display: inline-block;
-  background: none;     /* walang box */
-  padding: 0;           /* walang padding */
-  border: none;         /* walang border */
-  cursor: pointer;      /* pointer cursor sa hover/tap */
-  transition: transform 0.2s ease;
-}
-
-.back-btn:hover {
-  transform: scale(1.05); /* maliit na zoom sa hover/tap */
-}
-
-.back-icon {
-  width: 150px;         /* adjust size depende sa screen */
-  height: 150px;
-  object-fit: contain;  /* scale image nang tama */
-  display: block;       /* para buong image clickable */
-}
-
-/* ==================================================
-   TOUCH/CLICK PAGE ANIMATIONS
-================================================== */
-.page-loaded {
-  opacity: 1;
-  transition: opacity 0.4s ease-in;
-}
-
-.page-exit {
-  opacity: 0;
-  transition: opacity 0.35s ease-out;
-}
-
-/* ==================================================
    RESPONSIVE
 ================================================== */
 @media (max-width: 768px) {

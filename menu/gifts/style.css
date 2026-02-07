@@ -146,42 +146,6 @@ button {
 }
 
 /* ==================================================
-   FOOTER
-================================================== */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background: var(--clr-bg-glass);
-  color: var(--clr-text-light);
-  position: relative;
-  margin-top: 60px;
-  border-top-left-radius: var(--radius-lg);
-  border-top-right-radius: var(--radius-lg);
-}
-
-/* ==================================================
-   ACCESSIBILITY
-================================================== */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  white-space: nowrap;
-  border: 0;
-}
-
-/* ==================================================
-   ANIMATIONS
-================================================== */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(10px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-
-/* ==================================================
    RESPONSIVE
 ================================================== */
 @media (max-width: 768px) {

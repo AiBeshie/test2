@@ -12,10 +12,6 @@
 <body class="inner-page">
 
 <header class="inner-header">
-
-<a href="../../home.html" class="back-btn">
-  <img src="../../assets/icon/back-icon.png" alt="Back" class="back-icon">
-</a>
 </header>
 
 <section id="gallery" class="section gallery-page">
@@ -66,25 +62,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 let touchStartX = 0;
 let touchStartY = 0;
+let isDragging = false;
 
 document.addEventListener("touchstart", e => {
-  touchStartX = e.changedTouches[0].screenX;
-  touchStartY = e.changedTouches[0].screenY;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
+  isDragging = true;
 });
 
+document.addEventListener("touchmove", e => {
+  if (!isDragging) return;
+  
+  const currentX = e.touches[0].clientX;
+  const diffX = currentX - touchStartX;
+  
+  // Visual feedback: translate body as dragging
+  if (Math.abs(diffX) > 10) {
+    document.body.style.transform = `translateX(${diffX * 0.5}px)`;
+    document.body.style.transition = "none";
+  }
+}, { passive: true });
+
 document.addEventListener("touchend", e => {
-  const touchEndX = e.changedTouches[0].screenX;
-  const touchEndY = e.changedTouches[0].screenY;
-
-  const diffX = touchEndX - touchStartX;
-  const diffY = touchEndY - touchStartY;
-
-  if (Math.abs(diffX) > 70 || Math.abs(diffY) > 70) {
-    document.body.classList.add("page-exit");
-
+  if (!isDragging) return;
+  isDragging = false;
+  
+  const currentX = e.changedTouches[0].clientX;
+  const diffX = currentX - touchStartX;
+  const threshold = 100; // Need 100px drag to go back
+  
+  // Drag left or right past threshold
+  if (Math.abs(diffX) > threshold) {
+    document.body.style.transition = "all 0.35s ease";
+    document.body.style.transform = `translateX(${diffX > 0 ? 100 : -100}%)opacity: 0)`;
     setTimeout(() => {
-      window.location.href = "../../index.html";
+      window.location.href = "../../home.html";
     }, 350);
+  } else {
+    // Not enough drag, animate back to original
+    document.body.style.transition = "all 0.3s ease";
+    document.body.style.transform = "translateX(0)";
   }
 });
 </script>

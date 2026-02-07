@@ -24,9 +24,23 @@ html, body {
 ========================= */
 .gallery-wrapper {
   display: grid;
-  gap: clamp(16px, 2vw, 32px); /* spacing between categories */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: clamp(16px, 2vw, 32px);
   padding: clamp(16px, 2vw, 32px);
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(12px, 1.5vw, 16px);
+  }
 }
 
 /* FIGURE CARD */
@@ -40,7 +54,20 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-/* IMAGE */
+/* Image counter */
+.drive-counter {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  z-index: 50;
+  font-family: 'Courier New', monospace;
+}
 .gallery-wrapper img {
   width: 100%;
   aspect-ratio: 1/1;
@@ -125,96 +152,158 @@ html, body {
 }
 
 /* =========================
-   LIGHTBOX
+   LIGHTBOX (ANDROID GALLERY STYLE)
 ========================= */
 .drive-popup {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.96);
+  background: #000;
   display: none;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   z-index: 9999;
+  overflow: hidden;
 }
 
 .drive-popup iframe {
+  flex: 1;
   width: 100%;
   height: 100%;
   border: none;
+  background: #000;
 }
 
-/* CAPTION */
-#driveCaption {
+/* HEADER - Counter and title */
+#driveCaption,
+.drive-counter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6), transparent);
   color: #fff;
-  margin-top: 10px;
-  font-size: clamp(12px, 1.2vw, 15px);
+  padding: 12px 16px;
   text-align: center;
-  opacity: 0.85;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
 }
 
-/* CONTROLS */
+.drive-counter {
+  top: 14px;
+  right: 16px;
+  left: auto;
+  background: none;
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+}
+
+#driveCaption {
+  padding-top: 14px;
+  padding-bottom: 6px;
+}
+
+/* BOTTOM ACTION BAR (Android style) */
 .drive-close,
 .drive-prev,
 .drive-next,
 .drive-download,
 .drive-share {
-  position: absolute;
-  background: rgba(0,0,0,0.5);
+  position: fixed;
+  bottom: 16px;
+  background: transparent;
   border: none;
   color: #fff;
   cursor: pointer;
-  width: clamp(38px, 5vw, 46px);
-  height: clamp(38px, 5vw, 46px);
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  font-size: 1.4rem;
   transition: all 0.25s ease;
   z-index: 10001;
 }
 
-.drive-close:hover,
-.drive-prev:hover,
-.drive-next:hover,
-.drive-download:hover,
-.drive-share:hover {
-  background: rgba(0,0,0,0.8);
-  transform: scale(1.12);
+.drive-close:active,
+.drive-prev:active,
+.drive-next:active,
+.drive-download:active,
+.drive-share:active {
+  opacity: 0.6;
 }
 
-.drive-close { top: 20px; left: 20px; }
-.drive-prev { left: 20px; top: 50%; transform: translateY(-50%); }
-.drive-next { right: 20px; top: 50%; transform: translateY(-50%); }
-.drive-download { top: 20px; right: 70px; }
-.drive-share { top: 20px; right: 130px; }
+/* Position buttons in bottom bar */
+.drive-close { left: 16px; bottom: 20px; font-size: 1.8rem; }
+.drive-prev { left: 50%; transform: translateX(-140px); bottom: 16px; }
+.drive-next { left: 50%; transform: translateX(100px); bottom: 16px; }
+.drive-download { right: 70px; bottom: 16px; }
+.drive-share { right: 16px; bottom: 16px; }
+
+/* Mobile: Hide controls by default, show on tap */
+@media (max-width: 768px) {
+  #driveCaption,
+  .drive-counter,
+  .drive-close,
+  .drive-prev,
+  .drive-next,
+  .drive-download,
+  .drive-share {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Show when controls visible */
+  .drive-popup.controls-visible #driveCaption,
+  .drive-popup.controls-visible .drive-counter,
+  .drive-popup.controls-visible .drive-close,
+  .drive-popup.controls-visible .drive-prev,
+  .drive-popup.controls-visible .drive-next,
+  .drive-popup.controls-visible .drive-download,
+  .drive-popup.controls-visible .drive-share {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Desktop: Always show */
+@media (min-width: 769px) {
+  #driveCaption,
+  .drive-counter,
+  .drive-close,
+  .drive-prev,
+  .drive-next,
+  .drive-download,
+  .drive-share {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
 
 /* SHARE MENU */
 .share-popup {
-  position: absolute;
-  top: 65px;
-  right: 10px;
+  position: fixed;
+  bottom: 70px;
+  right: 16px;
   display: none;
   flex-direction: column;
   background: rgba(0,0,0,0.9);
-  padding: 10px;
-  border-radius: 14px;
-  gap: 8px;
+  padding: 8px;
+  border-radius: 12px;
+  gap: 6px;
   z-index: 10002;
 }
 
 .share-popup a {
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
   text-align: center;
+  font-size: 0.85rem;
   background: rgba(255,255,255,0.12);
   transition: all 0.2s ease;
 }
 
-.share-popup a:hover {
-  background: rgba(255,255,255,0.3);
-  transform: scale(1.05);
+.share-popup a:active {
+  background: rgba(255,255,255,0.25);
 }
 
 body.popup-open { overflow: hidden; }
@@ -234,31 +323,4 @@ body.popup-open { overflow: hidden; }
     grid-template-columns: repeat(2, 1fr);
     gap: 6px;
   }
-}
-
-
-
-
-.back-btn {
-  position: fixed;      /* fixed sa screen */
-  bottom: 2px;         /* lower-left corner */
-  left: -40px;
-  z-index: 1000;        /* nasa ibabaw ng lahat */
-  display: inline-block;
-  background: none;     /* tanggalin kahit anong background */
-  padding: 0;           /* tanggalin padding */
-  border: none;         /* tanggalin border */
-  cursor: pointer;      /* pointer cursor sa hover */
-  transition: transform 0.2s ease;
-}
-
-.back-btn:hover {
-  transform: scale(1.05); /* maliit na animation sa hover/tap */
-}
-
-.back-icon {
-  width: 200px;         /* adjust size ng image */
-  height: 200px;
-  object-fit: contain;
-  display: block;
 }

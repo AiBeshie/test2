@@ -306,16 +306,88 @@ button:hover {
 
 /* ================= RESPONSIVE INNER PAGES ================= */
 @media (max-width: 768px) {
+  .inner-page {
+    padding: 25px 18px;
+  }
+  h2.section__title {
+    font-size: 1.75rem;
+  }
+  .section {
+    padding: 25px 18px;
+  }
   .gallery-wrapper {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
   .pagination button { padding: 6px 12px; }
 }
 
+@media (max-width: 600px) {
+  .inner-page {
+    padding: 18px 14px;
+  }
+  h2.section__title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+  .section {
+    padding: 18px 14px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+  }
+  .section p {
+    font-size: 0.95rem;
+    margin: 8px 0;
+  }
+  input, select, textarea, button {
+    padding: 10px 12px;
+    margin: 8px 0;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  textarea {
+    resize: vertical;
+    max-height: 140px;
+  }
+  .gallery-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 100%;
+  }
+  .gallery-img {
+    height: 120px;
+    object-fit: cover;
+  }
+  .pagination {
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .pagination button {
+    padding: 7px 11px;
+    font-size: 0.8rem;
+  }
+  .back-btn {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+  .gift-list {
+    padding-left: 15px;
+  }
+  .gift-list li {
+    font-size: 1rem;
+    margin-bottom: 7px;
+  }
+  .footer {
+    font-size: 0.8rem;
+    padding: 8px;
+    margin-top: 15px;
+  }
+}
+
 @media (max-width: 480px) {
   .gallery-wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
-  .pagination button { padding: 5px 10px; font-size: 0.85rem; }
+  .pagination button { padding: 5px 10px; font-size: 0.75rem; }
 }
 

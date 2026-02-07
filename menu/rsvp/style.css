@@ -157,39 +157,6 @@ body.inner-page {
   box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
 }
 
-/* ================= BACK ICON — MATCH GALLERY STYLE ================= */
-.back-btn {
-  position: fixed;
-  bottom: 2px;
-  left: -40px;
-  z-index: 10001; /* above literally everything */
-  display: inline-block;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.back-btn:hover {
-  transform: scale(1.05);
-}
-
-.back-icon {
-  position: fixed;
-  bottom: 2px;
-
-  width: 200px;
-  height: 200px;
-  object-fit: contain;
-  display: block;
-  pointer-events: auto; /* allow click */
-  z-index: 10002;       /* above gallery content */
-}
-/* OPTIONAL: combine button + icon hover for stronger effect */
-.back-btn:hover .back-icon {
-  transform: scale(1.1);
-}
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
   .section {
