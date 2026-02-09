@@ -1,58 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- =========================
+       META / SEO
+  ========================= -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aldrin John & Sharmaine | Wedding Invitation</title>
+  <meta name="description" content="Wedding Invitation of Aldrin John & Sharmaine on June 20, 2027. Celebrate our special day!" />
+  <meta property="og:title" content="Aldrin John & Sharmaine | Wedding Invitation" />
+  <meta property="og:description" content="Join us in celebrating our special day on June 20, 2027!" />
+  <meta property="og:image" content="assets/cover.jpg" />
+  <meta property="og:type" content="website" />
 
-  <title>Aldrin & Sharmaine | Wedding Menu</title>
-  <meta name="description" content="Navigate through our wedding story, details, gallery and RSVP." />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
+<body>
 
-<body class="menu-page">
 
-  <div class="menu-container">
+  <!-- =========================
+       BACKGROUND MUSIC
+  ========================= -->
+  <audio id="bgMusic" loop>
+    <source src="assets/music/music 1.mp3" type="audio/mpeg" />
+  </audio>
 
-    <a href="menu/story/story.html" class="menu-btn story-btn" data-title="OUR STORY" aria-label="Our Story"></a>
+  <!-- =========================
+       HASHTAG
+  ========================= -->
+  <div class="hashtag">#AldrinFoundHisMaine</div>
 
-    <a href="menu/details/details.html" class="menu-btn details-btn" data-title="DETAILS" aria-label="Wedding Details"></a>
+  <!-- =========================
+       PRENUP SECTION
+  ========================= -->
 
-    <a href="menu/rsvp/rsvp.html" class="menu-btn rsvp-btn" data-title="RSVP" aria-label="RSVP"></a>
+ <!-- PRENUP SECTION -->
+<div class="prenup-wrapper">
+  <div id="prenup-gallery" class="gallery-wrapper"></div>
+  <img class="names" src="assets/names/2.png" alt="Couple Names" />
+</div>
 
-    <a href="menu/gallery/gallery.html" class="menu-btn gallery-btn" data-title="GALLERY" aria-label="Gallery"></a>
+    <!-- Multi-box Countdown -->
+    <div id="countdownBoxes" class="hero__countdown-multi">
+      <div class="countdown-box">
+        <div id="daysNumber" class="countdown-number">0</div>
+        <div class="countdown-label">days</div>
+      </div>
+      <div class="countdown-box">
+        <div id="hoursNumber" class="countdown-number">0</div>
+        <div class="countdown-label">hrs</div>
+      </div>
+      <div class="countdown-box">
+        <div id="minutesNumber" class="countdown-number">0</div>
+        <div class="countdown-label">mins</div>
+      </div>
+      <div class="countdown-box">
+        <div id="secondsNumber" class="countdown-number">0</div>
+        <div class="countdown-label">secs</div>
+      </div>
+    </div>
 
-    <a href="menu/gifts/gifts.html" class="menu-btn gifts-btn" data-title="GIFTS" aria-label="Gifts"></a>
 
-    <a href="menu/contact/contact.html" class="menu-btn contact-btn" data-title="CONTACT" aria-label="Contact"></a>
 
+
+
+
+<!-- =========================
+     STORY SECTION
+========================= -->
+<section id="story" class="section" data-aos="fade-up">
+<h2 class="section__title">Our-Story</h2>
+
+  <p class="section__text">
+    Our journey began in the most unexpected way. From laughter-filled conversations to quiet moments of support, we grew closer with every shared experience.
+  </p>
+
+  <p class="section__text">
+    Along the way, we discovered that love is in the little things—the gentle gestures, the kind words, and the moments that make life beautiful.
+  </p>
+
+  <h2 class="section__title">-Aldrin</h2>
+
+  <img src="assets/prenup/4.jpg" alt="Our Story" loading="lazy" />
+
+  <p class="section__text">
+    Every challenge we faced only strengthened our bond. Together, we celebrated victories, learned from mistakes, and created memories that will last a lifetime.
+  </p>
+
+  <p class="section__text">
+    Now, as we prepare to say "I do," we are grateful for the love and support of family and friends who have been part of our journey.
+  </p>
+
+  <h2 class="section__title">-Maine</h2>
+
+  <img src="assets/prenup/5.jpg" alt="Our Story" loading="lazy" />
+
+  <p class="section__text">
+    From the first hello to this moment, every step has led us here. Our hearts are full, and we can't wait to share this next chapter together.
+  </p>
+
+  <p class="section__text">
+    Join us as we celebrate our love surrounded by those who mean the most to us. The best is yet to come!
+  </p>
+
+</section>
+
+
+
+<section id="details-section">
+  <section id="details" class="section" data-aos="fade-up">
+    <div class="details-wrapper">
+     <video id="detailsVideo" muted playsinline preload="auto" width="100%" height="100%">
+
+        <source src="assets/video/1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+      <button id="btnCeremony" class="map-hotspot" data-map="ceremony" aria-label="Ceremony Map"></button>
+      <button id="btnReception" class="map-hotspot" data-map="reception" aria-label="Reception Map"></button>
+    </div>
+  </section>
+
+  <section class="details-text">
+    <div class="event-card">
+      <h3>📍 Ceremony</h3>
+      <p><strong>Mary, Mother of Good Counsel Parish</strong></p>
+      <p>Peach Street, Marcelo Green Village, Parañaque City, Metro Manila</p>
+    </div>
+
+    <div class="event-card">
+      <h3>🍽️ Reception</h3>
+      <p><strong>The Narra Tree Clubhouse</strong></p>
+      <p>Parañaque, Metro Manila</p>
+    </div>
+  </section>
+</section>
+
+
+  <!-- Map Modal -->
+<div id="mapModal" class="map-modal">
+  <div class="map-modal-content">
+    <span id="closeMap" class="close-map">&times;</span>
+ 
+    <div class="map-modal-header" id="mapTitle">Title</div>
+    <div class="map-modal-address" id="mapAddress"></div>
+
+    <iframe id="mapFrame" src="" allowfullscreen loading="lazy"></iframe>
+  </div>
+</div>
+
+<!-- Invitation Section -->
+<section id="invitation">
+  <!-- Video Background -->
+  <video autoplay muted loop playsinline id="invitationVideo">
+    <source src="assets/video/2.mp4" type="video/mp4">
+  </video>
+  <h2 class="section__title">Invitation Card</h2>
+  <p>Click below to view our wedding invitations</p>
+
+  <!-- Main thumbnail -->
+  <div id="invitation-gallery">
+    <img src="assets/invitation/1.png" alt="Invitation 1" id="thumbnail">
   </div>
 
+  <!-- View All Button -->
+  <button id="viewAllBtn">View All</button>
+</section>
 
-  <!-- ================= MENU BUTTON ANIMATION SCRIPT ================= -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("page-loaded");
+<!-- Lightbox Popup -->
+<div id="invitationPopup">
+  <!-- Fullscreen Image -->
+  <span class="closePopup" id="invitationPopupClose">&times;</span>
+  
 
-  const buttons = document.querySelectorAll(".menu-btn");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("pointerdown", (e) => {
-      e.preventDefault();
-      btn.classList.add("hover");
-      document.body.classList.add("page-exit");
-
-      setTimeout(() => {
-        window.location.href = btn.href;
-      }, 420);
-    });
-  });
-});
-</script>
+  <!-- Popup Thumbnails Grid -->
+  <div id="popupGallery">
+    <!-- thumbnails injected dynamically -->
+  </div>
+</div>
 
 
+<!-- =========================
+     RSVP SECTION
+========================= -->
+<section id="rsvp" class="section" data-aos="fade-up">
+  <h2 class="section__title">RSVP</h2>
+  <p>Please let us know if you can join us 💜</p>
 
-<script src="js/main.js"></script>
+  <form class="rsvp-form">
+    <input type="text" id="rsvpName" name="name" placeholder="Your Full Name" required />
+
+    <select id="rsvpAttendance" name="attendance" required>
+      <option value="" hidden selected>Will you attend?</option>
+      <option value="accepts">Accepts with pleasure 💜</option>
+      <option value="not_sure">Not sure yet 🤍</option>
+      <option value="declines">Regretfully declines 😔</option>
+    </select>
+
+    <!-- NUMBER OF GUESTS -->
+<input 
+  type="number"
+  id="rsvpGuests"
+  name="guests"
+  min="1"
+  max="51"
+  step="1"
+  placeholder="How many will attend (incl. you)?"
+  required
+/>
+
+    <textarea id="rsvpMessage" name="message" rows="3" placeholder="Message (optional)"></textarea>
+
+    <button type="submit" class="btn btn--secondary">Send RSVP</button>
+    <div class="rsvp-message" id="rsvpMessageStatus"></div>
+  </form>
+</section>
+
+
+
+  <!-- =========================
+       BOTTOM NAVIGATION
+  ========================= -->
+  <nav class="nav-bottom">
+    <div class="nav__links">
+      <a href="#prenup-gallery">
+        <img src="assets/icons/home.png" alt="Our Story">
+        <span>Home</span>
+      </a>
+      <a href="#story">
+        <img src="assets/icons/our-story.png" alt="Event Details">
+        <span>Story</span>
+      </a>
+     <a href="#details">
+        <img src="assets/icons/details.png" alt="Event Details">
+        <span>Details</span>
+      </a>
+      
+      <a href="#gallery">
+        <img src="assets/icons/gallery.png" alt="Prenup Gallery">
+        <span>Gallery</span>
+      </a>
+        <a href="#rsvp">
+        <img src="assets/icons/rsvp.png" alt="RSVP">
+        <span>RSVP</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- =========================
+       THANK YOU SECTION
+  ========================= -->
+  <section id="thankyou" class="section" data-aos="fade-up">
+    <h2 class="section__title">Thank You</h2>
+    <p>
+      From the bottom of our hearts, thank you for being part of our journey.
+      Your love and prayers mean the world to us.
+    </p>
+  </section>
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+  <footer class="footer">
+    <p>&copy; 2027 Aldrin John &amp; Sharmaine</p>
+  </footer>
+
+  <!-- =========================
+       SCROLL TO TOP
+  ========================= -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+  <!-- =========================
+       SCRIPTS
+  ========================= -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js" defer></script>
 
 </body>
+
 </html>
